@@ -25,6 +25,13 @@ ul {
   list-style: none;
 }
 
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 16px;
+}
+
 form {
   display: flex;
   gap: 8px;
