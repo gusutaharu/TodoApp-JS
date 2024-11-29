@@ -8,6 +8,11 @@
   } else {
     todos = JSON.parse(localStorage.getItem('todos'))
   }
+
+  const saveTodos = () => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  };
+
   const renderTodo = (todo) => {
     /*
     -li
@@ -25,7 +30,7 @@
           item.isCompleted = !item.isCompleted;
         }
       });
-      localStorage.setItem('todos',JSON.stringify(todos));
+      saveTodos();
     });
     const span = document.createElement('span');
     span.textContent = todo.title;
@@ -42,7 +47,7 @@
       todos = todos.filter((item)=>{
         return item.id !== todo.id;
       });
-      localStorage.setItem('todos',JSON.stringify(todos));
+      saveTodos();
     });
     const li = document.createElement('li');
     li.appendChild(label);
@@ -67,9 +72,16 @@
     renderTodo(todo);
     todos.push(todo);
     console.table(todos);
-    localStorage.setItem('todos',JSON.stringify(todos));
+    saveTodos();
     input.value = '';
     input.focus();
+  });
+
+  document.querySelector('#purge').addEventListener('click', ()=>{
+    todos = todos.filter((todo) => {
+      return todo.isCompleted === false;
+    });
+    saveTodos();
   });
 
   renderTods();
