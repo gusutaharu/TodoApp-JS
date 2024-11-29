@@ -58,6 +58,6 @@
 
   renderTods();
 
-  localStorage.setItem('message', 'hello');
-  console.log(localStorage.getItem('message'));
+  localStorage.setItem('todos', JSON.stringify(todos));
+  console.log(JSON.parse(localStorage.getItem('todos')));
 }
