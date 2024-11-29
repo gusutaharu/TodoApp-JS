@@ -57,4 +57,7 @@
   });
 
   renderTods();
+
+  localStorage.setItem('message', 'hello');
+  console.log(localStorage.getItem('message'));
 }
