@@ -55,7 +55,7 @@
     document.querySelector('#todos').appendChild(li);
   };
 
-  const renderTods = () => {
+  const renderTodos = () => {
     todos.forEach((todo) => {
       renderTodo(todo);
     });
@@ -78,12 +78,19 @@
   });
 
   document.querySelector('#purge').addEventListener('click', ()=>{
+    if (!confirm('Sure?')) {
+      return;
+    }
     todos = todos.filter((todo) => {
       return todo.isCompleted === false;
     });
     saveTodos();
+    document.querySelectorAll('#todos li').forEach((li)=>{
+      li.remove();
+    });
+    renderTodos();
   });
 
-  renderTods();
+  renderTodos();
 
 }
